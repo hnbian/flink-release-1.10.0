@@ -23,6 +23,8 @@ import org.apache.flink.streaming.runtime.streamrecord.StreamRecord;
 
 /**
  * Partitioner that forwards elements only to the locally running downstream operation.
+ * 将上游算子的结果发送到本地下游算子
+ * 只适用于上游算子实例数与下游算子相同时，每个上游算子实例将记录发送给下游算子对应的实例。
  *
  * @param <T> Type of the elements in the Stream
  */
