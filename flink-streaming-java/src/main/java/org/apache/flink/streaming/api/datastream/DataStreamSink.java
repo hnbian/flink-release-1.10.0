@@ -103,7 +103,7 @@ public class DataStreamSink<T> {
 
 	/**
 	 * Sets the parallelism for this sink. The degree must be higher than zero.
-	 *
+	 * 设置 sink 的并行度，必须大于 0
 	 * @param parallelism The parallelism for this sink.
 	 * @return The sink with set parallelism.
 	 */
