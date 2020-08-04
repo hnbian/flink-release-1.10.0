@@ -47,6 +47,7 @@ import scala.collection.JavaConverters._
 @Public
 class DataStream[T](stream: JavaStream[T]) {
 
+
   /**
    * Returns the [[StreamExecutionEnvironment]] associated with the current [[DataStream]].
    *
@@ -119,6 +120,7 @@ class DataStream[T](stream: JavaStream[T]) {
   
   /**
    * Returns the parallelism of this operation.
+    * 获取并行度
    */
   def parallelism: Int = stream.getParallelism()
 
