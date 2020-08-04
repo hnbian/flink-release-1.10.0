@@ -365,16 +365,27 @@ public class ExecutionVertex implements AccessExecutionVertex, Archiveable<Archi
 	}
 
 	// --------------------------------------------------------------------------------------------
-	//  Graph building
+	//  Graph building 构建图
 	// --------------------------------------------------------------------------------------------
 
+	/**
+	 * 在flink中单个oprate可以理解为一个节点（vertex）
+	 * 从一个oprate 到另一个oprate可以理解为一个边（edge）
+	 * 下游有多少并行度那么从上游到下游就会有多少edge
+	 * 每个edge描述了他的source是哪个分区数据，以及他的下游也是就是consumer 有哪些分区
+	 *
+	 * @param inputNumber
+	 * @param source
+	 * @param edge
+	 * @param consumerNumber
+	 */
 	public void connectSource(int inputNumber, IntermediateResult source, JobEdge edge, int consumerNumber) {
 
 		final DistributionPattern pattern = edge.getDistributionPattern();
 		final IntermediateResultPartition[] sourcePartitions = source.getPartitions();
 
 		ExecutionEdge[] edges;
-
+		
 		switch (pattern) {
 			case POINTWISE:
 				edges = connectPointwise(sourcePartitions, inputNumber);
@@ -394,6 +405,8 @@ public class ExecutionVertex implements AccessExecutionVertex, Archiveable<Archi
 		// add the consumers to the source
 		// for now (until the receiver initiated handshake is in place), we need to register the
 		// edges as the execution graph
+		// consumer 添加到 source
+		// 注册 edge 作为执行图
 		for (ExecutionEdge ee : edges) {
 			ee.getSource().addConsumer(ee, consumerNumber);
 		}

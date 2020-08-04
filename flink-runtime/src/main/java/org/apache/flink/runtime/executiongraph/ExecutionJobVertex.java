@@ -455,6 +455,8 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 
 			// fetch the intermediate result via ID. if it does not exist, then it either has not been created, or the order
 			// in which this method is called for the job vertices is not a topological order
+			// 通过ID获取中间结果。
+			// 如果它不存在，则说明它尚未创建，或者为作业顶点调用此方法的顺序不是拓扑顺序
 			IntermediateResult ires = intermediateDataSets.get(edge.getSourceId());
 			if (ires == null) {
 				throw new JobException("Cannot connect this job graph to the previous graph. No previous intermediate result found for ID "
@@ -465,7 +467,9 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 
 			int consumerIndex = ires.registerConsumer();
 
+			// parallelism 并行度
 			for (int i = 0; i < parallelism; i++) {
+				//taskVertices 每个线程去选择 source
 				ExecutionVertex ev = taskVertices[i];
 				ev.connectSource(num, ires, edge, consumerIndex);
 			}
