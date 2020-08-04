@@ -120,12 +120,13 @@ class DataStream[T](stream: JavaStream[T]) {
   
   /**
    * Returns the parallelism of this operation.
-    * 获取并行度
+   * 获取并行度
    */
   def parallelism: Int = stream.getParallelism()
 
   /**
    * Sets the parallelism of this operation. This must be at least 1.
+   * 设置并行度，并行度最少为 1
    */
   def setParallelism(parallelism: Int): DataStream[T] = {
     stream match {
@@ -432,6 +433,9 @@ class DataStream[T](stream: JavaStream[T]) {
    * Partitions a tuple DataStream on the specified key fields using a custom partitioner.
    * This method takes the key position to partition on, and a partitioner that accepts the key
    * type.
+    *
+    * 使用自定义分区程序在指定的键字段上对元组DataStream进行分区。
+    * 此方法将 key 位置放在要分区的位置，并使用接受 key 类型的分区程序。
    *
    * Note: This method works only on single field keys.
    */
