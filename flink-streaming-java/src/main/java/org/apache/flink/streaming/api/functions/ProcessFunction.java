@@ -27,6 +27,7 @@ import org.apache.flink.util.OutputTag;
 
 /**
  * A function that processes elements of a stream.
+ * 处理流的元素
  *
  * <p>For every element in the input stream {@link #processElement(Object, Context, Collector)}
  * is invoked. This can produce zero or more elements as output. Implementations can also
@@ -54,9 +55,12 @@ public abstract class ProcessFunction<I, O> extends AbstractRichFunction {
 
 	/**
 	 * Process one element from the input stream.
+	 * 处理输入流中的一个元素
 	 *
 	 * <p>This function can output zero or more elements using the {@link Collector} parameter
 	 * and also update internal state or set timers using the {@link Context} parameter.
+	 * 此函数可以使用Collector参数输出零个或多个元素，
+	 * 还可以使用Context参数更新内部状态或设置计时器。
 	 *
 	 * @param value The input value.
 	 * @param ctx A {@link Context} that allows querying the timestamp of the element and getting
