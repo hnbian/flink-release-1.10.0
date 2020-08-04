@@ -23,11 +23,16 @@ import org.apache.flink.runtime.executiongraph.ExecutionVertex;
 /**
  * A distribution pattern determines, which sub tasks of a producing task are connected to which
  * consuming sub tasks.
+ * 分布式模式判定，
+ * 产生数据的子任务数据被分配到那个消费数据子任务中
  */
 public enum DistributionPattern {
 
 	/**
 	 * Each producing sub task is connected to each sub task of the consuming task.
+	 *
+	 * 一个生产子任务都连接到消费任务的一个子任务。
+	 * 非 shuffle
 	 * <p>
 	 * {@link ExecutionVertex#connectAllToAll(org.apache.flink.runtime.executiongraph.IntermediateResultPartition[], int)}
 	 */
@@ -35,6 +40,8 @@ public enum DistributionPattern {
 
 	/**
 	 * Each producing sub task is connected to one or more subtask(s) of the consuming task.
+	 * 一个生产子任务产生的数据会发送到一个或多个消费数据的子任务
+	 * shuffle
 	 * <p>
 	 * {@link ExecutionVertex#connectPointwise(org.apache.flink.runtime.executiongraph.IntermediateResultPartition[], int)}
 	 */
