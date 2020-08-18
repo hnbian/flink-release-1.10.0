@@ -68,6 +68,8 @@ public class SlidingEventTimeWindows extends WindowAssigner<Object, TimeWindow> 
 	public Collection<TimeWindow> assignWindows(Object element, long timestamp, WindowAssignerContext context) {
 		if (timestamp > Long.MIN_VALUE) {
 			List<TimeWindow> windows = new ArrayList<>((int) (size / slide));
+
+			// 计算窗口的初始时间
 			long lastStart = TimeWindow.getWindowStartWithOffset(timestamp, offset, slide);
 			for (long start = lastStart;
 				start > timestamp - size;

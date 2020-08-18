@@ -260,10 +260,10 @@ public class TimeWindow extends Window {
 
 	/**
 	 * Method to get the window start for a timestamp.
-	 *
-	 * @param timestamp epoch millisecond to get the window start.
-	 * @param offset The offset which window start would be shifted by.
-	 * @param windowSize The size of the generated windows.
+	 * 计算窗口初始时间戳
+	 * @param timestamp epoch millisecond to get the window start. 以毫秒为单位来启动窗口
+	 * @param offset The offset which window start would be shifted by. 窗口起始位置将偏移的偏移量，时间戳
+	 * @param windowSize The size of the generated windows. 生成的窗口的大小。
 	 * @return window start
 	 */
 	public static long getWindowStartWithOffset(long timestamp, long offset, long windowSize) {
