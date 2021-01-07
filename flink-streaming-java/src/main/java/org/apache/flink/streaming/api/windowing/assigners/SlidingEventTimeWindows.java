@@ -48,6 +48,7 @@ public class SlidingEventTimeWindows extends WindowAssigner<Object, TimeWindow> 
 	private static final long serialVersionUID = 1L;
 
 	private final long size;
+	//
 
 	private final long slide;
 

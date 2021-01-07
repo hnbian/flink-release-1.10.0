@@ -405,6 +405,7 @@ public class CheckpointConfig implements java.io.Serializable {
 		 *
 		 * <p>Note that checkpoint state is always kept if the job terminates
 		 * with state {@link JobStatus#FAILED}.
+		 * 当手动取消任务时删除 checkpoint
 		 */
 		DELETE_ON_CANCELLATION(true),
 
@@ -417,6 +418,7 @@ public class CheckpointConfig implements java.io.Serializable {
 		 *
 		 * <p>Note that checkpoint state is always kept if the job terminates
 		 * with state {@link JobStatus#FAILED}.
+		 * 手动取消任务也需要保留 checkpoint
 		 */
 		RETAIN_ON_CANCELLATION(false);
 

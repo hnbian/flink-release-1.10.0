@@ -587,6 +587,8 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * in which case an independent state will be kept per key.
    *
    * Note that the user state object needs to be serializable.
+    * R 输出类型
+    * S 状态类型
    */
   def flatMapWithState[R: TypeInformation, S: TypeInformation](
         fun: (T, Option[S]) => (TraversableOnce[R], Option[S])): DataStream[R] = {

@@ -26,6 +26,7 @@ import java.util.Random;
 /**
  * Partitioner that distributes the data equally by selecting one output channel
  * randomly.
+ * 将数据随机分发到一个分区
  *
  * @param <T>
  *            Type of the Tuple

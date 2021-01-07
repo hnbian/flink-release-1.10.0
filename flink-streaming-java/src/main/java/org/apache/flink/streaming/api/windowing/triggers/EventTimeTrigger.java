@@ -35,6 +35,10 @@ public class EventTimeTrigger extends Trigger<Object, TimeWindow> {
 
 	@Override
 	public TriggerResult onElement(Object element, long timestamp, TimeWindow window, TriggerContext ctx) throws Exception {
+
+		//window.maxTimestamp()：当前窗口的最大时间戳的数值
+		//ctx.getCurrentWatermark() ：是window上下文所接收到的，最新到达的watermark，该watermark触发了上一个窗口的计算。
+		// 此时新窗口尽管还未填满，仅有一个数据，但是其最大时间边界已经确定，一般来说要比此时的watermark的值要大。
 		if (window.maxTimestamp() <= ctx.getCurrentWatermark()) {
 			// if the watermark is already past the window fire immediately
 			return TriggerResult.FIRE;

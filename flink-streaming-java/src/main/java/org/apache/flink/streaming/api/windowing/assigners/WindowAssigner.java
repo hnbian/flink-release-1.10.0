@@ -55,6 +55,7 @@ public abstract class WindowAssigner<T, W extends Window> implements Serializabl
 
 	/**
 	 * Returns the default trigger associated with this {@code WindowAssigner}.
+	 * 返回 WindowAssigner 设置的触发器
 	 */
 	public abstract Trigger<T, W> getDefaultTrigger(StreamExecutionEnvironment env);
 
@@ -67,6 +68,7 @@ public abstract class WindowAssigner<T, W extends Window> implements Serializabl
 	/**
 	 * Returns {@code true} if elements are assigned to windows based on event time,
 	 * {@code false} otherwise.
+	 * 时间语义是否设置为 eventTime
 	 */
 	public abstract boolean isEventTime();
 
@@ -83,6 +85,7 @@ public abstract class WindowAssigner<T, W extends Window> implements Serializabl
 
 		/**
 		 * Returns the current processing time.
+		 * 返回当前处理时间
 		 */
 		public abstract long getCurrentProcessingTime();
 

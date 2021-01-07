@@ -23,6 +23,7 @@ import org.apache.flink.streaming.runtime.streamrecord.StreamRecord;
 
 /**
  * Partitioner that selects all the output channels.
+ * 选择所有分区发送数据
  *
  * @param <T> Type of the elements in the Stream being broadcast
  */
@@ -33,6 +34,7 @@ public class BroadcastPartitioner<T> extends StreamPartitioner<T> {
 	/**
 	 * Note: Broadcast mode could be handled directly for all the output channels
 	 * in record writer, so it is no need to select channels via this method.
+	 * 广播模式可以直接在记录写入器中为所有输出通道处理，因此不需要通过此方法选择通道。
 	 */
 	@Override
 	public int selectChannel(SerializationDelegate<StreamRecord<T>> record) {

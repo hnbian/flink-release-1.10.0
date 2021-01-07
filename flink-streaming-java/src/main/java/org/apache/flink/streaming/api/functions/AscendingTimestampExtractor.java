@@ -36,5 +36,6 @@ import org.apache.flink.annotation.PublicEvolving;
 @Deprecated
 public abstract class AscendingTimestampExtractor<T>
 	extends org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor<T> {
+	///---
 
 }
